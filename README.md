@@ -1,6 +1,6 @@
 # Simple Pager Demo
 
-This is a simple static pager I put together using [Svelte](https://svelte.dev). 
+This is a simple static pager I put together using [Svelte](https://svelte.dev). You can see it in action on [Zeit](https://public.robvince.now.sh).
 
 
 The following is an excerpt of the documentation at [sveltejs/template](https://github.com/sveltejs/template). For more info
