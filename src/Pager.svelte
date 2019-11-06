@@ -39,12 +39,6 @@
 		background-color: #ddd;
 	}
 
-	.keypad {
-		display: grid;
-		grid-template-columns: repeat(3, 5em);
-		grid-gap: 0.5em;
-	}
-
 	.pager {	
 		width: 600px;
 		position: relative;
@@ -55,10 +49,6 @@
 		height: 400px;
 		position: absolute;
 		overflow: auto;
-	}
-	
-	.keypad {
-		margin: auto;
 	}
 
 	.page-number {
