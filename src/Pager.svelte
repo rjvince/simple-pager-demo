@@ -13,26 +13,22 @@
 </script>
 
 <style>
-	.center {
-	  text-align: center;
-	}
-
 	.pagination {
-	  display: inline-block;
+	  display: flex;
+	  justify-content: center;
+	  flex-direction: row;
 	}
 
 	.pagination-control {
 	  color: black;
-	  float: left;
-	  padding: 8px 16px;
-	  text-decoration: none;
+	  margin: 0 0 0.5em 0;
+	  padding: 0.5em 1em;
 	  transition: background-color .3s;
 	}
 
 	.pagination-control.active {
 	  background-color: #990000;
 	  color: white;
-	  border: 1px solid #990000;
 	}
 
 	.pagination span:hover:not(.active) {
@@ -40,51 +36,56 @@
 	}
 
 	.pager {	
-		width: 600px;
 		position: relative;
 		margin: auto;
+		display: flex;
+		flex-direction: column	
 	}
-	
+
 	.page-content {
-		height: 400px;
+		left: 0;
+		right: 0;
 		position: absolute;
+		margin: auto;
 		overflow: auto;
 	}
 
-	.page-number {
-		margin: auto;
+	@media screen and (min-width: 864px) {
+	  .page-content {
+		max-width: 80vw;
+	  }
 	}
+
+
 </style>
 
 <div class="pager">	
-	<div class="center">
-	  <div class="pagination">
-	  <button class="pagination-control"
-			on:click="{() => index -=1}" 
-			disabled="{index == 0}">
-			&lt;
-		</button>
-	  {#each contents as page(page.id)}
-	  	<span class="pagination-control {index === page.id ? 'active' : ''}"
-	  		  on:click="{() => index = page.id}"
-	  	>{page.id + 1}</span>
-	  {/each}
-	  <button class="pagination-control"
-			on:click="{() => index +=1}"
-			disabled="{index == contents.length - 1}">
-			&gt;
-		</button>
-	  </div>
-	</div>
-
-	<div class="page" >
-		{#each contents as page(page.id)}
-		{#if index == page.id}
-		<div class="page-content" transition:fade>
-			{@html page.content}
+		<div class="pagination">
+			<button class="pagination-control"
+				on:click="{() => index -=1}" 
+				disabled="{index == 0}">
+				&lt;
+			</button>
+			{#each contents as page(page.id)}
+				<span class="pagination-control {index === page.id ? 'active' : ''}"
+					  on:click="{() => index = page.id}"
+				>{page.id + 1}</span>
+			{/each}
+			<button class="pagination-control"
+				on:click="{() => index +=1}"
+				disabled="{index == contents.length - 1}">
+				&gt;
+			</button>
 		</div>
-		{/if}
-		{/each}
-	</div>
+	
+		<div>
+			{#each contents as page(page.id)}
+			{#if index == page.id}
+			<div class="page-content" transition:fade>
+				{@html page.content}
+			</div>
+			{/if}
+			{/each}
+		</div>
 
 </div>
